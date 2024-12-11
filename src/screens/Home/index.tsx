@@ -1,15 +1,32 @@
 import * as S from './styles'
 
-const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
+import Minicard from '../../components/Minicard';
 
-import Night from '../../assets/night.jpg'
+type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
-const Home = () => {
+export interface HomeProps {
+  title?: string;
+  colorTitle?: ColorTitleTypes;
+  backgroundImg?: any;
+
+}
+
+const Home = ({
+  title,
+  colorTitle = 'night',
+  backgroundImg,
+}: HomeProps) => {
   return (
     <S.CotainerImageBackground
-      source={Night}
+      source={backgroundImg}
       resizeMode="cover"
-      ></S.CotainerImageBackground>
+    >
+      <S.Title colorTitle={colorTitle}>{title}</S.Title>
+      <S.Subtitle colorTitle={colorTitle}>Ensolarado</S.Subtitle>
+      <S.Temperature colorTitle={colorTitle}>26°</S.Temperature>
+
+      <Minicard />
+    </S.CotainerImageBackground>
   );
 }
 
