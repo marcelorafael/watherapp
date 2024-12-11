@@ -10,7 +10,7 @@ import Morning from '../../assets/morning.jpg'
 export default function HomePresentation() {
  return (
    <Home
-    title='M.R'
+    title='Belém-PA'
     backgroundImg={Night}
    />
   );

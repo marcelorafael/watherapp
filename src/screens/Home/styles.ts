@@ -38,3 +38,25 @@ export const Title = styled.Text<TitleTypes>`
         ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};
 `;
+
+export const Subtitle = styled.Text<TitleTypes>`
+    ${({ theme, colorTitle }: DefaultTheme) => css`
+        font-size: 18px;
+
+        text-align: center;
+
+        ${!!colorTitle && titleModifiers[colorTitle](theme)}
+    `};
+`;
+
+
+export const Temperature = styled.Text<TitleTypes>`
+    ${({ theme, colorTitle }: DefaultTheme) => css`
+        font-size: 80px;
+        font-weight: bold;
+
+        text-align: center;
+
+        ${!!colorTitle && titleModifiers[colorTitle](theme)}
+    `};
+`;
