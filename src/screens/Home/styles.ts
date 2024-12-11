@@ -1,16 +1,40 @@
+import { DefaultTheme } from "styled-components";
 import styled, { css } from "styled-components/native";
 
-export const Wrapper = styled.View`
-    ${() => css`
-        flex: 1;
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
-    `};
-`;
+import { HomeProps } from ".";
+
+type TitleTypes = Pick<HomeProps, 'colorTitle'>
+
+const titleModifiers = {
+    night: (theme: DefaultTheme) => css`
+       color: ${theme.COLORS.BACKGROUND};
+    `,
+    afternoon: (theme: DefaultTheme) => css`
+       color: ${theme.COLORS.PRIMARY_700};
+    `,
+    morning: (theme: DefaultTheme) => css`
+       color: ${theme.COLORS.PRIMARY_700};
+    `
+} as any
 
 export const CotainerImageBackground = styled.ImageBackground`
     ${() => css`
         flex: 1;
-        justify-content: center;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+    `};
+`;
+
+export const Title = styled.Text<TitleTypes>`
+    ${({ theme, colorTitle }: DefaultTheme) => css`
+        font-size: 25px;
+        font-weight: bold;
+
+        text-align: center;
+
+        ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};
 `;
