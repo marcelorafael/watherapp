@@ -61,6 +61,7 @@ export const Temperature = styled.Text<TitleTypes>`
     ${({ theme, colorTitle }: DefaultTheme) => css`
         font-size: 80px;
         font-weight: bold;
+        font-family: Play-Regular;
 
         text-align: center;
 

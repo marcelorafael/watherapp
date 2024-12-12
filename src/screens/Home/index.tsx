@@ -25,7 +25,7 @@ const Home = ({
       <S.Header>
         <S.Title colorTitle={colorTitle}>{title}</S.Title>
         <S.Subtitle colorTitle={colorTitle}>Ensolarado</S.Subtitle>
-        <S.Temperature colorTitle={colorTitle}>26°</S.Temperature>
+        <S.Temperature colorTitle={colorTitle}>23°</S.Temperature>
       </S.Header>
 
 
