@@ -1,6 +1,7 @@
 import * as S from './styles'
 
 import Minicard from '../../components/Minicard';
+import { View } from 'react-native';
 
 type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
@@ -21,11 +22,23 @@ const Home = ({
       source={backgroundImg}
       resizeMode="cover"
     >
-      <S.Title colorTitle={colorTitle}>{title}</S.Title>
-      <S.Subtitle colorTitle={colorTitle}>Ensolarado</S.Subtitle>
-      <S.Temperature colorTitle={colorTitle}>26°</S.Temperature>
+      <S.Header>
+        <S.Title colorTitle={colorTitle}>{title}</S.Title>
+        <S.Subtitle colorTitle={colorTitle}>Ensolarado</S.Subtitle>
+        <S.Temperature colorTitle={colorTitle}>26°</S.Temperature>
+      </S.Header>
 
-      <Minicard />
+
+      <S.ContainerDays>
+        <Minicard />
+        <Minicard />
+        <Minicard />
+        <Minicard />
+        <Minicard />
+        <Minicard />
+        <Minicard />
+      </S.ContainerDays>
+
     </S.CotainerImageBackground>
   );
 }

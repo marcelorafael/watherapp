@@ -22,9 +22,16 @@ export const CotainerImageBackground = styled.ImageBackground`
         flex: 1;
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
-        /* display: flex; */
-        /* justify-content: center; */
+        display: flex;
+        justify-content: space-around;
         /* align-items: center; */
+    `};
+`;
+
+export const Header = styled.View`
+    ${() => css`
+        background-color: ${({theme}) => theme.COLORS.TEXT_SECONDARY};
+        opacity: 0.6;
     `};
 `;
 
@@ -56,6 +63,17 @@ export const Temperature = styled.Text<TitleTypes>`
         font-weight: bold;
 
         text-align: center;
+
+        ${!!colorTitle && titleModifiers[colorTitle](theme)}
+    `};
+`;
+
+export const ContainerDays = styled.View`
+    ${({ theme, colorTitle }: DefaultTheme) => css`
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
 
         ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};
