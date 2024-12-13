@@ -1,5 +1,6 @@
 import { DefaultTheme } from "styled-components";
 import styled, { css } from "styled-components/native";
+import fontMap from "../../typography/fonts";
 
 import { HomeProps } from ".";
 
@@ -61,7 +62,7 @@ export const Temperature = styled.Text<TitleTypes>`
     ${({ theme, colorTitle }: DefaultTheme) => css`
         font-size: 80px;
         font-weight: bold;
-        font-family: Play-Regular;
+        font-family: ${fontMap.ltr.bold};
 
         text-align: center;
 
