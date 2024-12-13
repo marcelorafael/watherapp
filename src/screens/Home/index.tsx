@@ -1,7 +1,7 @@
 import * as S from './styles'
 
 import Minicard from '../../components/Minicard';
-import { View } from 'react-native';
+import fontMap from '../../typography/fonts';
 
 type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
@@ -17,15 +17,18 @@ const Home = ({
   colorTitle = 'night',
   backgroundImg,
 }: HomeProps) => {
+
+  
+
   return (
     <S.CotainerImageBackground
       source={backgroundImg}
       resizeMode="cover"
     >
       <S.Header>
-        <S.Title colorTitle={colorTitle}>{title}</S.Title>
+        <S.Title colorTitle={colorTitle} style={{fontFamily: fontMap.ltr.regular}}>{title}</S.Title>
         <S.Subtitle colorTitle={colorTitle}>Ensolarado</S.Subtitle>
-        <S.Temperature colorTitle={colorTitle}>26°</S.Temperature>
+        <S.Temperature colorTitle={colorTitle}>23°</S.Temperature>
       </S.Header>
 
 
