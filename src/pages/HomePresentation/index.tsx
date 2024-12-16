@@ -52,8 +52,6 @@ export default function HomePresentation() {
     loadData();
   }, []);
 
-  // console.log(data?.results);
-
   return (
     <Home
       title={data?.results?.city}

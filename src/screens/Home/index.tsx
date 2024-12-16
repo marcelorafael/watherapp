@@ -36,12 +36,10 @@ const Home = ({
       resizeMode="cover"
     >
       <S.Header>
-
         <S.Title colorTitle={colorTitle} style={{ fontFamily: fontMap.ltr.regular }}>{title}</S.Title>
         <S.Subtitle colorTitle={colorTitle}>{condition}</S.Subtitle>
         <S.Temperature colorTitle={colorTitle}>{!!temp ? `${temp}°` : ''}</S.Temperature>
         <S.Subtitle colorTitle={colorTitle}>{date}</S.Subtitle>
-
 
         <S.ContainerCondition>
           <S.Img source={{
@@ -53,7 +51,6 @@ const Home = ({
           }} />
         </S.ContainerCondition>
       </S.Header>
-
 
       <S.ContainerDays>
         <Minicard />
