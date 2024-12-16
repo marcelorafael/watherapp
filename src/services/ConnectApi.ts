@@ -3,9 +3,9 @@ import React, {useState, useEffect} from 'react';
 // import { View, Text } from 'react-native';
 import api from './api';
 
-const GetDatas = async () => {
+const GetDatas = async (lat: number,lon: number) => {
     
-    let response = await api.get('?key=34664f77&lat=-1.455833&lon=%20-48.503887&user_ip=remote');
+    let response = await api.get(`https://api.hgbrasil.com/weather?key=615483e0&lat=${Number(lat)},&lon=${Number(lon)}&user_ip=remote`);
     let data = response.data;
 
     return (
@@ -15,5 +15,4 @@ const GetDatas = async () => {
 
 
 
-
-export default GetDatas();
+export default GetDatas;
