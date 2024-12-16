@@ -80,3 +80,19 @@ export const ContainerDays = styled.View`
         ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};
 `;
+
+export const Img = styled.Image`
+    ${() => css`
+        width: 50px;
+        height: 50px;
+    `};
+`;
+
+export const ContainerCondition = styled.View`
+    ${() => css`
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    `};
+`;
