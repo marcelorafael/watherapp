@@ -7,8 +7,10 @@ import Night from '../../assets/night.jpg'
 import Afternoon from '../../assets/afternoon.jpg'
 import Afternoon2 from '../../assets/afternoon-1.jpg'
 import Morning from '../../assets/morning.jpg'
+
 import { useEffect, useState } from 'react';
 import Geolocation from '@react-native-community/geolocation';
+import moment from 'moment';
 
 import GetDatas from '../../services/ConnectApi'
 import { AxiosResponse } from 'axios';
@@ -47,6 +49,9 @@ export default function HomePresentation() {
 
   useEffect(() => {
 
+    moment.locale("pt-br");
+    console.log(moment().format('LT'))
+
     getLocation()
 
     loadData();
@@ -62,6 +67,7 @@ export default function HomePresentation() {
       moonImg={data?.results?.moon_phase}
       backgroundImg={Morning}
       dataFooter={data?.results?.forecast}
+      currently={data?.results?.currently}
     />
   );
 }

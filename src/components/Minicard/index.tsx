@@ -19,9 +19,11 @@ export interface MinicardProps {
     icon?: FontAwesome6Types
     conditionImg?: string
     date?: string;
+    min?: string;
+    max?: string;
 }
 
-export default function Minicard({ title = 'Seg', icon = 'cloud-showers-heavy', conditionImg, date }: MinicardProps) {
+export default function Minicard({ title = 'Seg', icon = 'cloud-showers-heavy', conditionImg, date, max = '', min = '' }: MinicardProps) {
 
     const [svgContent, setSvgContent] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -52,6 +54,8 @@ export default function Minicard({ title = 'Seg', icon = 'cloud-showers-heavy', 
                 <SvgXml xml={svgContent} width={70} height={70} /> // Ajusta o tamanho aqui
             ) : null}
             <Text style={{ color: 'white' }}>{date}</Text>
+            <Text style={{ color: 'white' }}>Min: {min}º</Text>
+            <Text style={{ color: 'white' }}>Max: {max}º</Text>
         </S.Wrapper>
 
     );

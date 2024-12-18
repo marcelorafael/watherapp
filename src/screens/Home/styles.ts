@@ -25,14 +25,19 @@ export const CotainerImageBackground = styled.ImageBackground`
 
         display: flex;
         justify-content: space-around;
-        /* align-items: center; */
+        align-items: center;
     `};
 `;
 
 export const Header = styled.View`
     ${() => css`
-        background-color: ${({theme}) => theme.COLORS.TEXT_SECONDARY};
-        opacity: 0.7;
+        display: flex;
+        flex-direction: row;
+        /* background-color: ${({ theme }) => theme.COLORS.TEXT_SECONDARY};
+        opacity: 0.7; */
+        margin-top: -100px;
+
+        width: 100%;
     `};
 `;
 
@@ -53,6 +58,8 @@ export const Subtitle = styled.Text<TitleTypes>`
 
         text-align: center;
 
+        margin-right: 10px;
+
         ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};
 `;
@@ -60,7 +67,7 @@ export const Subtitle = styled.Text<TitleTypes>`
 
 export const Temperature = styled.Text<TitleTypes>`
     ${({ theme, colorTitle }: DefaultTheme) => css`
-        font-size: 80px;
+        font-size: 100px;
         font-weight: bold;
         font-family: ${fontMap.ltr.bold};
 
@@ -86,6 +93,7 @@ export const Img = styled.Image`
         width: 50px;
         height: 50px;
         margin-top: 12px;
+        margin-left: 20px;
     `};
 `;
 
@@ -94,6 +102,9 @@ export const ContainerCondition = styled.View`
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+
+        position: absolute;
+        right: 10;
+        bottom: 20;
     `};
 `;
