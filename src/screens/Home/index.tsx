@@ -2,7 +2,8 @@ import * as S from './styles'
 
 import Minicard from '../../components/Minicard';
 import fontMap from '../../typography/fonts';
-import { View } from 'react-native';
+
+import { SvgUri } from 'react-native-svg';
 
 type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
@@ -15,6 +16,7 @@ export interface HomeProps {
   temp?: string;
   moonImg?: string;
   conditionImg?: string;
+  dataFooter?: any[];
 }
 
 const Home = ({
@@ -26,10 +28,9 @@ const Home = ({
   temp = '',
   moonImg = '',
   conditionImg = '',
+  dataFooter = [],
 }: HomeProps) => {
-
-
-
+  const img = "https://assets.hgbrasil.com/weather/icons/conditions/snow.svg"
   return (
     <S.CotainerImageBackground
       source={backgroundImg}
@@ -42,9 +43,10 @@ const Home = ({
         <S.Subtitle colorTitle={colorTitle}>{date}</S.Subtitle>
 
         <S.ContainerCondition>
-          <S.Img source={{
-            uri: `https://assets.hgbrasil.com/weather/icons/conditions/${conditionImg}.svg`
-          }} />
+          <SvgUri
+            width="50%"
+            uri={`https://assets.hgbrasil.com/weather/icons/conditions/${!!conditionImg ? conditionImg : 'cloud'}.svg`}
+          />
 
           <S.Img source={{
             uri: `https://assets.hgbrasil.com/weather/icons/moon/${moonImg}.png`
@@ -53,13 +55,14 @@ const Home = ({
       </S.Header>
 
       <S.ContainerDays>
-        <Minicard />
-        <Minicard />
-        <Minicard />
-        <Minicard />
-        <Minicard />
-        <Minicard />
-        <Minicard />
+        {dataFooter.slice(1, 7).map((item, index) => (
+          <Minicard
+            key={index}
+            title={item?.weekday}
+            conditionImg={item?.condition}
+            date={item?.date}
+          />
+        ))}
       </S.ContainerDays>
 
     </S.CotainerImageBackground>

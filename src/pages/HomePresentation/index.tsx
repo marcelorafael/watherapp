@@ -61,6 +61,7 @@ export default function HomePresentation() {
       conditionImg={data?.results?.condition_slug}
       moonImg={data?.results?.moon_phase}
       backgroundImg={Night}
+      dataFooter={data?.results?.forecast}
     />
   );
 }

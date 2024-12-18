@@ -85,6 +85,7 @@ export const Img = styled.Image`
     ${() => css`
         width: 50px;
         height: 50px;
+        margin-top: 12px;
     `};
 `;
 
