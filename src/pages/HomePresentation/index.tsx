@@ -60,7 +60,7 @@ export default function HomePresentation() {
       temp={data?.results?.temp}
       conditionImg={data?.results?.condition_slug}
       moonImg={data?.results?.moon_phase}
-      backgroundImg={Night}
+      backgroundImg={Morning}
       dataFooter={data?.results?.forecast}
     />
   );
