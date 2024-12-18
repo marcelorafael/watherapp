@@ -32,7 +32,7 @@ export const CotainerImageBackground = styled.ImageBackground`
 export const Header = styled.View`
     ${() => css`
         background-color: ${({theme}) => theme.COLORS.TEXT_SECONDARY};
-        opacity: 0.6;
+        opacity: 0.7;
     `};
 `;
 
@@ -85,6 +85,7 @@ export const Img = styled.Image`
     ${() => css`
         width: 50px;
         height: 50px;
+        margin-top: 12px;
     `};
 `;
 
