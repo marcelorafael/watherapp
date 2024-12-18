@@ -6,6 +6,9 @@ export const Wrapper = styled.View`
         align-items: center;
         justify-content: space-around;
 
-        height: 80px;
+        border-right-width: 1px;
+        border-right-color: white;
+
+        /* height: 80px; */
     `}
 `;

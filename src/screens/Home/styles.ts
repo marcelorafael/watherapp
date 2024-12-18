@@ -24,8 +24,10 @@ export const CotainerImageBackground = styled.ImageBackground`
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
 
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
+
+        padding: 150px 0 70px 0;
     `};
 `;
 
@@ -81,8 +83,15 @@ export const ContainerDays = styled.View`
     ${({ theme, colorTitle }: DefaultTheme) => css`
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
+
+        background-color: ${({ theme }) => theme.COLORS.TEXT_SECONDARY};
+        opacity: 0.7;
+
+        height: 170px;
+
+        border-radius: 8px;
+
+        padding: 15px 0 20px 0;
 
         ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};
@@ -106,5 +115,13 @@ export const ContainerCondition = styled.View`
         position: absolute;
         right: 10;
         bottom: 20;
+    `};
+`;
+
+export const ButtonOpenModal = styled.TouchableOpacity`
+    ${() => css`
+        position: absolute;
+        right: 18px;
+        top: 12px;
     `};
 `;
