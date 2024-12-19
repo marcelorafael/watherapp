@@ -106,6 +106,7 @@ const Home = ({
       <AnimatedModal visible={isModalVisible} onClose={() => setModalVisible(false)}>
         <View>
           <S.Title>{title}</S.Title>
+          <S.Subtitle>{temp}º | {condition}</S.Subtitle>
         </View>
       </AnimatedModal>
 
