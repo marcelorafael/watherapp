@@ -103,19 +103,9 @@ const Home = ({
         ))}
       </S.ContainerDays>
 
-      <AnimatedModal visible={isModalVisible} onClose={() => { }}>
+      <AnimatedModal visible={isModalVisible} onClose={() => setModalVisible(false)}>
         <View>
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
-          <Icon name='menu' color='white' size={30} />
+          <S.Title>{title}</S.Title>
         </View>
       </AnimatedModal>
 

@@ -1,5 +1,5 @@
 import { Animated } from "react-native";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 // Estilos com styled-components
 export const Backdrop = styled(Animated.View)`
@@ -8,17 +8,19 @@ export const Backdrop = styled(Animated.View)`
 `;
 
 export const Container = styled(Animated.View)`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #555;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  padding: 20px;
-  shadow-color: #000;
-  /* shadow-offset: { width: 0, height: 2 }; */
-  shadow-opacity: 0.25;
-  shadow-radius: 4px;
-  elevation: 5;
+  ${() => css`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${({theme}) => theme.COLORS.INFO};
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    shadow-color: #000;
+    /* shadow-offset: { width: 0, height: 2 }; */
+    shadow-opacity: 0.25;
+    shadow-radius: 4px;
+    elevation: 5;
+  `}
 `;

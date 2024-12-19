@@ -35,8 +35,6 @@ export const Header = styled.View`
     ${() => css`
         display: flex;
         flex-direction: row;
-        /* background-color: ${({ theme }) => theme.COLORS.TEXT_SECONDARY};
-        opacity: 0.7; */
         margin-top: -100px;
 
         width: 100%;
@@ -49,6 +47,8 @@ export const Title = styled.Text<TitleTypes>`
         font-weight: bold;
 
         text-align: center;
+
+        color: ${() => theme.COLORS.BACKGROUND};
 
         ${!!colorTitle && titleModifiers[colorTitle](theme)}
     `};

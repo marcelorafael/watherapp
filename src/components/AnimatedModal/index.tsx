@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Modal, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import Icon from '@react-native-vector-icons/ant-design';
+
 import styled from 'styled-components/native';
 import * as S from './styles';
 
 // Tipagem das propriedades
 interface AnimatedModalProps {
   visible: boolean;
-  onClose: () => void;
   children: React.ReactNode;
+  onClose: () => void;
 }
 
 // Componente principal
@@ -52,6 +54,7 @@ const AnimatedModal: React.FC<AnimatedModalProps> = ({ visible, onClose, childre
         <S.Backdrop style={{ opacity }} />
       </TouchableWithoutFeedback>
       <S.Container style={{ transform: [{ translateY }], opacity }}>
+        <Icon name='close' color='white' size={30} onPress={onClose} />
         {children}
       </S.Container>
     </Modal>

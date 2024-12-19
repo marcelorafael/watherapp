@@ -47,10 +47,37 @@ export default function HomePresentation() {
 
   }
 
-  useEffect(() => {
+  function setBackgorundHome() {
+    const arrBackground: any = [Morning, Afternoon, Afternoon2, Night]
 
-    moment.locale("pt-br");
-    console.log(moment().format('LT'))
+    moment.locale();
+
+    const hourValue = moment().format('LT').split(" ")[0][0];
+
+    const pmOrAmValue = moment().format('LT').split(" ")[1]
+
+    if (pmOrAmValue === "AM") {
+
+      return arrBackground[0]
+    }
+
+    if (pmOrAmValue === "PM" && Number(hourValue) < 4) {
+
+      return arrBackground[1]
+    }
+
+    if (pmOrAmValue === "PM" && Number(hourValue) > 4) {
+
+      return arrBackground[2]
+    }
+
+    if (pmOrAmValue === "PM" && Number(hourValue) > 5) {
+
+      return arrBackground[3]
+    }
+  }
+
+  useEffect(() => {
 
     getLocation()
 
@@ -65,7 +92,7 @@ export default function HomePresentation() {
       temp={data?.results?.temp}
       conditionImg={data?.results?.condition_slug}
       moonImg={data?.results?.moon_phase}
-      backgroundImg={Morning}
+      backgroundImg={setBackgorundHome()}
       dataFooter={data?.results?.forecast}
       currently={data?.results?.currently}
     />
