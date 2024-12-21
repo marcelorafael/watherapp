@@ -21,7 +21,7 @@ const titleModifiers = {
 export const CotainerImageBackground = styled.ImageBackground`
     ${() => css`
         flex: 1;
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+        background-color: ${({ theme }) => theme.COLORS.INFO};
 
         display: flex;
         justify-content: space-between;
@@ -34,10 +34,12 @@ export const CotainerImageBackground = styled.ImageBackground`
 export const Header = styled.View`
     ${() => css`
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         margin-top: -100px;
 
         width: 100%;
+
+        padding: 20px 0 0 20px;
     `};
 `;
 
@@ -79,15 +81,16 @@ export const Temperature = styled.Text<TitleTypes>`
     `};
 `;
 
-export const ContainerDays = styled.View`
+export const ContainerDays = styled.ScrollView.attrs({
+    horizontal: true
+})`
     ${({ theme, colorTitle }: DefaultTheme) => css`
-        display: flex;
-        flex-direction: row;
 
         background-color: ${({ theme }) => theme.COLORS.TEXT_SECONDARY};
         opacity: 0.7;
 
-        height: 170px;
+        max-height: 200px;
+        width: 90%;
 
         border-radius: 8px;
 
@@ -111,10 +114,9 @@ export const ContainerCondition = styled.View`
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-between;
 
-        position: absolute;
-        right: 10;
-        bottom: 20;
+        
     `};
 `;
 
@@ -122,6 +124,56 @@ export const ButtonOpenModal = styled.TouchableOpacity`
     ${() => css`
         position: absolute;
         right: 18px;
-        top: 12px;
+        top: 30px;
     `};
+`;
+
+export const WrapperModal = styled.View`
+    ${() => css`
+        background-color: ${({ theme }) => theme.COLORS.INFO};
+        opacity: 0.9;
+
+        height: 95%;
+        border-radius: 8px;
+
+        align-items: center;
+    `}
+`;
+
+export const ContainerTopModal = styled.View`
+    ${() => css`
+        background-color: ${({ theme }) => theme.COLORS.INFO};
+        width: 90%;
+        height: 100px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        border-radius: 8px;
+
+        margin-top: 15px;
+
+        elevation: 1;
+    `}
+`;
+
+export const MiniContainerModal = styled.View`
+    ${() => css`
+        align-items: center;
+    `}
+`;
+
+export const OtherImg = styled.Image`
+    ${() => css`
+        width: 50px;
+        height: 50px;
+    `};
+`;
+
+export const TitleModal = styled.Text`
+    ${() => css`
+        color: ${({ theme }) => theme.COLORS.BACKGROUND};  
+    `}
 `;

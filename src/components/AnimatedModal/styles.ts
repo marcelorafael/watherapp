@@ -13,7 +13,7 @@ export const Container = styled(Animated.View)`
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({theme}) => theme.COLORS.INFO};
+    /* background-color: ${({theme}) => theme.COLORS.INFO}; */
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 20px;

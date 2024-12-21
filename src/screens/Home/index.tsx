@@ -10,6 +10,13 @@ import { useEffect, useState } from 'react';
 import Icon from '@react-native-vector-icons/ant-design';
 import AnimatedModal from '../../components/AnimatedModal';
 
+import Goticula from '../../assets/goticula.png';
+import Sunrise from '../../assets/sunrise.png';
+import Sunset from '../../assets/sunset.png';
+import moment from 'moment';
+
+import { useFormatTime } from '../../hooks/useFormatTime';
+
 type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
 export interface HomeProps {
@@ -23,6 +30,9 @@ export interface HomeProps {
   conditionImg?: string;
   dataFooter?: any[];
   currently?: string
+  humidity?: string | number;
+  sunrise?: string;
+  sunset?: string;
 }
 
 const Home = ({
@@ -36,7 +46,12 @@ const Home = ({
   conditionImg = '',
   dataFooter = [],
   currently = '',
+  humidity = '',
+  sunset = '',
+  sunrise = '',
 }: HomeProps) => {
+  const formatTime = useFormatTime();
+
   const [svgContent, setSvgContent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setModalVisible] = useState(false);
@@ -48,7 +63,7 @@ const Home = ({
       .then((data: any) => {
         // Adiciona `viewBox` se não existir
         if (!data.includes('viewBox')) {
-          data = data.replace('<svg', '<svg viewBox="-30 -40 200 200"'); // Ajuste o valor do viewBox conforme necessário
+          data = data.replace('<svg', '<svg viewBox="-40 -30 200 200"'); // Ajuste o valor do viewBox conforme necessário
         }
         setSvgContent(data);
         setLoading(false);
@@ -59,6 +74,7 @@ const Home = ({
       });
   }, []);
 
+
   return (
     <S.CotainerImageBackground
       source={backgroundImg}
@@ -68,25 +84,26 @@ const Home = ({
         <Icon name='menu' color='white' size={30} />
       </S.ButtonOpenModal>
       <S.Header>
-        <View style={{ marginLeft: 10 }}>
-          <S.Title colorTitle={colorTitle} style={{ fontFamily: fontMap.ltr.regular }}>{title}, {currently}</S.Title>
+        <S.Title colorTitle={colorTitle} style={{ fontFamily: fontMap.ltr.regular }}>{title}, {currently}</S.Title>
+        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <S.Temperature colorTitle={colorTitle}>{!!temp || temp === 0 ? `${temp}°` : ''}</S.Temperature>
+          <S.Img source={{
+            uri: `https://assets.hgbrasil.com/weather/icons/moon/${moonImg}.png`
+          }} />
         </View>
-        <S.Img source={{
-          uri: `https://assets.hgbrasil.com/weather/icons/moon/${moonImg}.png`
-        }} />
-
 
         <S.ContainerCondition>
           <S.Subtitle colorTitle={colorTitle}>{condition}</S.Subtitle>
+
           <S.Subtitle colorTitle={colorTitle}>{date}</S.Subtitle>
         </S.ContainerCondition>
       </S.Header>
 
 
+
       {svgContent ? (
         <View style={{ position: 'absolute', left: -20, bottom: 160 }}>
-          <SvgXml xml={svgContent} width={600} height={600} />
+          <SvgXml xml={svgContent} width={400} height={400} />
         </View>
       ) : null}
 
@@ -104,10 +121,26 @@ const Home = ({
       </S.ContainerDays>
 
       <AnimatedModal visible={isModalVisible} onClose={() => setModalVisible(false)}>
-        <View>
+        <S.WrapperModal>
           <S.Title>{title}</S.Title>
           <S.Subtitle>{temp}º | {condition}</S.Subtitle>
-        </View>
+
+          <S.ContainerTopModal>
+            <S.MiniContainerModal>
+              <S.TitleModal>Nascer do Sol</S.TitleModal>
+              <S.OtherImg source={Sunrise} />
+              <S.TitleModal>{formatTime(sunrise)}</S.TitleModal>
+            </S.MiniContainerModal>
+
+            <S.MiniContainerModal>
+              <S.TitleModal>Por do Sol</S.TitleModal>
+              <S.OtherImg source={Sunset} />
+              <S.TitleModal>{formatTime(sunset)}</S.TitleModal>
+            </S.MiniContainerModal>
+          </S.ContainerTopModal>
+
+
+        </S.WrapperModal>
       </AnimatedModal>
 
     </S.CotainerImageBackground>
