@@ -16,6 +16,7 @@ import Sunset from '../../assets/sunset.png';
 import moment from 'moment';
 
 import { useFormatTime } from '../../hooks/useFormatTime';
+import { useFetchSvg } from '../../hooks/useGetImageWeather';
 
 type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
@@ -33,6 +34,7 @@ export interface HomeProps {
   humidity?: string | number;
   sunrise?: string;
   sunset?: string;
+  wind_speedy?: string;
 }
 
 const Home = ({
@@ -49,14 +51,36 @@ const Home = ({
   humidity = '',
   sunset = '',
   sunrise = '',
+  wind_speedy = '',
 }: HomeProps) => {
   const formatTime = useFormatTime();
+  const { fetchSvg, svgData } = useFetchSvg();
 
   const [svgContent, setSvgContent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [dataModal, setDataModal] = useState<any>([]);
   const [isModalVisible, setModalVisible] = useState(false);
 
+
+  const [ImageSVG, setImageSVG] = useState<any>([]);
+
   useEffect(() => {
+
+    let svgImages: any = [];
+    dataFooter.map((item, index) => {
+      fetchSvg(item?.condition)
+      svgImages.push(svgData)
+    });
+
+    // setImageSVG(svgImages)
+
+    const updatedArr1 = dataFooter.map((item, index) => ({
+      ...item,
+      condition: svgImages[index] || item.condition, // Atualiza o condition apenas se houver valor correspondente em arr2
+    }));
+
+    setDataModal(updatedArr1)
+
     // Fazendo requisição para obter o SVG
     fetch(`https://assets.hgbrasil.com/weather/icons/conditions/${!!conditionImg ? conditionImg : 'cloud'}.svg`)
       .then((response) => response.text())
@@ -74,6 +98,7 @@ const Home = ({
       });
   }, []);
 
+  // console.log('dataModal: ', dataModal)
 
   return (
     <S.CotainerImageBackground
@@ -139,7 +164,19 @@ const Home = ({
             </S.MiniContainerModal>
           </S.ContainerTopModal>
 
+          <S.CenterViewModal>
+            <S.MiniContainerCenterViewModal>
+              {dataModal.map((item: any, index: any) => (
+                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                  <S.TitleModal>Hoje</S.TitleModal>
+                  <SvgXml xml={item?.condition} width={50} height={50} />
+                </View>
+              ))}
 
+            </S.MiniContainerCenterViewModal>
+          </S.CenterViewModal>
+
+          <View style={{ width: '90%', height: 10 }} />
         </S.WrapperModal>
       </AnimatedModal>
 
