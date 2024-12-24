@@ -14,9 +14,11 @@ import Goticula from '../../assets/goticula.png';
 import Sunrise from '../../assets/sunrise.png';
 import Sunset from '../../assets/sunset.png';
 import moment from 'moment';
+import axios from 'axios';
 
 import { useFormatTime } from '../../hooks/useFormatTime';
 import { useFetchSvg } from '../../hooks/useGetImageWeather';
+import CardCenterModal from '../../components/CardCenterModal';
 
 type ColorTitleTypes = 'night' | 'afternoon' | 'morning';
 
@@ -62,8 +64,6 @@ const Home = ({
   const [isModalVisible, setModalVisible] = useState(false);
 
 
-  const [ImageSVG, setImageSVG] = useState<any>([]);
-
   useEffect(() => {
 
     let svgImages: any = [];
@@ -97,8 +97,6 @@ const Home = ({
         setLoading(false);
       });
   }, []);
-
-  // console.log('dataModal: ', dataModal)
 
   return (
     <S.CotainerImageBackground
@@ -164,19 +162,27 @@ const Home = ({
             </S.MiniContainerModal>
           </S.ContainerTopModal>
 
-          <S.CenterViewModal>
-            <S.MiniContainerCenterViewModal>
-              {dataModal.map((item: any, index: any) => (
-                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                  <S.TitleModal>Hoje</S.TitleModal>
-                  <SvgXml xml={item?.condition} width={50} height={50} />
-                </View>
-              ))}
 
-            </S.MiniContainerCenterViewModal>
+          <S.TitleModal>PREVISÃO DO TEMPO PARA 10 DIAS</S.TitleModal>
+
+          <S.CenterViewModal>
+            {dataFooter.map((item: any, index: any) => (
+              <CardCenterModal
+                conditionImg={item?.condition}
+                key={index}
+                day={item?.weekday}
+                date={item?.date}
+                min={item?.min}
+                max={item?.max}
+                description={item?.description}
+                wind={item?.wind_speedy}
+                moonPhase={item?.moon_phase}
+              />
+            ))}
+
           </S.CenterViewModal>
 
-          <View style={{ width: '90%', height: 10 }} />
+          {/* <View style={{ width: '90%', height: 70 }} /> */}
         </S.WrapperModal>
       </AnimatedModal>
 

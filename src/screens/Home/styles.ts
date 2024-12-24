@@ -142,7 +142,7 @@ export const WrapperModal = styled.View`
 
 export const ContainerTopModal = styled.View`
     ${() => css`
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+        background-color: ${({ theme }) => theme.COLORS.PRIMARY_800};
         width: 90%;
         height: 100px;
 
@@ -170,25 +170,15 @@ export const MiniContainerModal = styled.View`
 
 export const CenterViewModal = styled.ScrollView`
     ${() => css`
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND};
+        background-color: ${({ theme }) => theme.COLORS.PRIMARY_800};
         width: 90%;
 
         border-radius: 8px;
 
-        padding: 0 10px 0 10px;
+        padding: 3px 10px 20px 10px;
+        margin-bottom: 20px;
     `}
 `;
-
-export const MiniContainerCenterViewModal = styled.View`
-    ${() => css`
-        border-bottom-color: ${({ theme }) => theme.COLORS.PRIMARY_700};
-        border-bottom-width: 0.5px;
-        width: 100%;
-
-        padding: 5px;
-    `}
-`;
-
 
 export const OtherImg = styled.Image`
     ${() => css`
@@ -199,6 +189,6 @@ export const OtherImg = styled.Image`
 
 export const TitleModal = styled.Text`
     ${() => css`
-        color: ${({ theme }) => theme.COLORS.TEXT_SECONDARY};  
+        color: ${({ theme }) => theme.COLORS.BACKGROUND};  
     `}
 `;
