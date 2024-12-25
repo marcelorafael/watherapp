@@ -3,7 +3,7 @@ import * as S from './styles'
 import Svg, { SvgUri, SvgXml } from 'react-native-svg';
 
 // import Icon from '@react-native-vector-icons/evil-icons';
-import FontAwesome6 from '@react-native-vector-icons/fontawesome6';
+import AntDesign from '@react-native-vector-icons/ant-design';
 import { useEffect, useState } from 'react';
 // cloud-showers-heavy <-- chuva
 // cloud-sun <-- sol com nuvem
@@ -19,9 +19,11 @@ export interface MinicardProps {
     icon?: FontAwesome6Types
     conditionImg?: string
     date?: string;
+    min?: string;
+    max?: string;
 }
 
-export default function Minicard({ title = 'Seg', icon = 'cloud-showers-heavy', conditionImg, date }: MinicardProps) {
+export default function Minicard({ title = 'Seg', icon = 'cloud-showers-heavy', conditionImg, date, max = '', min = '' }: MinicardProps) {
 
     const [svgContent, setSvgContent] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -52,6 +54,8 @@ export default function Minicard({ title = 'Seg', icon = 'cloud-showers-heavy', 
                 <SvgXml xml={svgContent} width={70} height={70} /> // Ajusta o tamanho aqui
             ) : null}
             <Text style={{ color: 'white' }}>{date}</Text>
+            <Text style={{ color: 'white' }}> <AntDesign name='caret-up' color="#e74c3c" size={20} /> {max}º</Text>
+            <Text style={{ color: 'white' }}> <AntDesign name='caret-down' color="#3498db" size={20} /> {min}º</Text>
         </S.Wrapper>
 
     );
